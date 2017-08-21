@@ -6,7 +6,7 @@ event and bufferevent. Event will be implement in a absoute way.
 here is a very simple echo server:
 
     #include <string>
-    #include "server.cpp"
+    #include "Server.cpp"
 
     void accept_cb(Handler h)
     {
@@ -19,7 +19,7 @@ here is a very simple echo server:
     int main()
     {
         Server *s = new Server();
-        s->create(8080,acceprt_cb);
+        s->create(8080,accept_cb);
         s.on("error",error_cb);
         s.on("close",close_cb);
     }   
