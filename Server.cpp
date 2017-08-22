@@ -3,17 +3,16 @@
 
 #include <map>
 #include "./loop/Mainloop.h"
-using namespace mio;
-using namespace loop;
-class Server
+#include "./component/EventEmitter.cpp"
+
+class Server:public EventEmitter
 {   
+    typedef void(* Callback)();
 public:
     Mainloop ml;
-    void listen(int port,void (* listen_cb)())
+    void create(int port,  Callback cb)
     {
         ml.start(port);
     }
-    void on(string route,void (* cb)(string));
-    void emit(string route,string msg);
 };
 #endif server_c

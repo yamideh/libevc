@@ -2,12 +2,10 @@
 #define event_c
 #include "event.h"
 
-namespace mio
+Event::Event(int fd,int (*read_cb)(void *),int (*write_cb)(void *))
 {
-    Event::Event(int fd,int (*read_cb)(void *),int (*write_cb)(void *))
-    {
-        this.fd = fd ;
-    }
-
+    this.fd = fd ;
 }
+
+
 #endif
