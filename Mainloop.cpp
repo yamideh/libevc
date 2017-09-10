@@ -24,9 +24,9 @@ int Mainloop::start(int port)
         return -1;
     }
     EventUtil.set_nonblocking(listener);
-    Session listener_session {listener};
-    vs.insert(listener_session);
-    EventUtil.add(listener_session.fd, this.sock,listener_session);
+    std::shared_ptr<Session> listener_session(new Session(listener));
+    vs.push_back(listener_session);
+    EventUtil.add(listener_session->fd, this.sock,listener_session.get());
     this.tick();
 }
 void Mainloop::tick()

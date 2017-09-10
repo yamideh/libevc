@@ -3,9 +3,10 @@
 #define mainloop_h
 
 #include <stdlib.h>
-#include "../mio/EventUtil.h"
-#include "./Mainloop.h"
-#include "../component/Session.cpp"
+#include <memory>
+#include "EventUtil.h"
+#include "Mainloop.h"
+#include "Session.cpp"
 #include "vector"
 
 
@@ -16,7 +17,7 @@ public:
     int port;
     int sock;
     bool done = false ;
-    vector<Session> vs;
+    vector<std::shared_ptr<Session>> vs;
 };
 
 
