@@ -27,6 +27,7 @@ class TimerHeap
 {
 public:
     static void push(std::shared_ptr<Timer>);
+    static std::shared_ptr<Timer> pop()
 private:
     static vector<std::shared_ptr<Timer>> vt;
 };

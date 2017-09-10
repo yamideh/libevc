@@ -24,7 +24,7 @@ int Mainloop::start(int port)
         return -1;
     }
     EventUtil.set_nonblocking(listener);
-    std::shared_ptr<Session> listener_session(new Session(listener));
+    std::shared_ptr<Session> listener_session(new Session(listener,this));
     vs.push_back(listener_session);
     EventUtil.add(listener_session->fd, this.sock,listener_session.get());
     this.tick();
@@ -39,6 +39,15 @@ void Mainloop::tick()
         // 运行到期的定时器
         // 运行wait中触发的回调
     }
+}
+
+Mainloop & Mainloop::get()
+{
+    if(_instance == nullptr)
+    {
+        _instance = new Mainloop();
+    }
+    return *_istance ;
 }
 
 #endif

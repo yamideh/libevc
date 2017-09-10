@@ -17,7 +17,10 @@ public:
     int port;
     int sock;
     bool done = false ;
+    static Mainloop & get();
     vector<std::shared_ptr<Session>> vs;
+private:
+    Mainloop *_instance = nullptr ;
 };
 
 
